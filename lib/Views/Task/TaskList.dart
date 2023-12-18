@@ -371,6 +371,14 @@ class _TaskListState extends State<TaskList> with TickerProviderStateMixin {
             selectedValues: selectedValues,
             backButton: () {
               setState(() {
+                selectedId = [];
+                selectedValues = [];
+                isMultipleUsers = false;
+              });
+            },
+            DoneButton: () {
+              print("object");
+              setState(() {
                 isMultipleUsers = false;
               });
             },
@@ -1009,9 +1017,14 @@ class MultipleUsers extends StatefulWidget {
   final List<String> selectedValues;
   final List<String> selectedId;
   final VoidCallback backButton;
+  final VoidCallback DoneButton;
 
   const MultipleUsers(
-      {Key key, this.selectedValues, this.selectedId, this.backButton})
+      {Key key,
+      this.selectedValues,
+      this.selectedId,
+      this.backButton,
+      this.DoneButton})
       : super(key: key);
   @override
   State<MultipleUsers> createState() => _MultipleUsersState();
@@ -1072,9 +1085,7 @@ class _MultipleUsersState extends State<MultipleUsers> {
         margin: EdgeInsets.only(bottom: 20),
         child: CustomLoginButton(
           fcolor: Colors.white,
-          press: () {
-            // Handle the action when the "Done" button is pressed
-          },
+          press: widget.DoneButton,
           bName: "Done",
         ),
       ),
