@@ -81,7 +81,7 @@ class _EmployeeViewState extends State<EmployeeView>
   setSelectedRadioTile1(int val) {
     setState(() {
       selectedRadioTile1 = val;
-      if (val == 1) {
+      if (val == 3) {
         thirdTab = 'All';
       } else {
         thirdTab = 'By Me';
